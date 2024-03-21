@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Reload";
+}
+
+<div style="text-align: center;">
+    <h1>Reload</h1>
+
+    <button class="btn btn-primary" style="border: 5px solid #555; background-color: #c0c0c0; width: 200px; margin: 10px;" onclick="buyBullets(2)">Buy 2 bullets for €1</button>
+    <button class="btn btn-primary" style="border: 5px solid #555; background-color: #c0c0c0; width: 200px; margin: 10px;" onclick="buyBullets(7)">Buy 7 bullets for €4</button>
+    <button class="btn btn-primary" style="border: 5px solid #555; background-color: #c0c0c0; width: 200px; margin: 10px;" onclick="buyBullets(12)">Buy 12 bullets for €7</button>
+</div>
+
+<script>
+    function buyBullets(count) {
+        var currentBullets = sessionStorage.getItem('remainingBullets');
+        var newBullets = currentBullets ? parseInt(currentBullets) + count : count;
+        sessionStorage.setItem('remainingBullets', newBullets.toString());
+        window.location.href = '/Home/Index';
+    }
+</script>

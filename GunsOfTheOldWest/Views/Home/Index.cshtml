@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Guns of the Old West";
+}
+
+<body>
+    <div class="text-center">
+        <h1>Guns of the Old West</h1>
+
+        <div class="d-inline-block">
+            <button class="btn btn-primary" style="border: 5px solid #555; background-color: #c0c0c0; border-radius: 50%; width: 100px; height: 100px;" onclick="fire()">Fire</button>
+            <p id="bullets">12 more bullets</p>
+        </div>
+    </div>
+
+    <script>
+        function getRemainingBullets() {
+            var bullets = sessionStorage.getItem('remainingBullets');
+            return bullets ? parseInt(bullets) : 12;
+        }
+
+        function updateRemainingBullets(count) {
+            sessionStorage.setItem('remainingBullets', count.toString());
+        }
+
+        function fire() {
+            var bullets = getRemainingBullets();
+            if (bullets > 0) {
+                var randomNumber = Math.floor(Math.random() * 11);
+                if (randomNumber <= 3) {
+                    window.location.href = "/Winner";
+                } else {
+                    bullets--;
+                    document.getElementById("bullets").innerText = bullets + (bullets === 1 ? " more bullet" : " more bullets");
+                    updateRemainingBullets(bullets);
+                }
+            } else {
+                window.location.href = "/Reload";
+            }
+        }
+
+        window.onload = function () {
+            var bullets = getRemainingBullets();
+            document.getElementById("bullets").innerText = bullets + (bullets === 1 ? " more bullet" : " more bullets");
+        };
+    </script>
+</body>

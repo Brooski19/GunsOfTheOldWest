@@ -1,0 +1,18 @@
+﻿@model SubmissionModel
+@{
+    ViewData["Title"] = "Summary";
+}
+
+<h1>Summary</h1>
+
+<p>First Name: @Model.FirstName</p>
+<p>Last Name: @Model.LastName</p>
+<p>Email: @Model.Email</p>
+<p>Phone: @Model.Phone</p>
+<p>Submitted Date: @Model.SubmittedDate</p>
+
+<div style="margin-top: 50px;">
+    <p>About the author: Lambert Kasaev</p>
+</div>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back to Home</a>
